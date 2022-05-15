@@ -2,7 +2,7 @@ import 'package:counter_bloc/presentation/pages/counter_bloc_page.dart';
 import 'package:counter_bloc/presentation/pages/counter_cubit_page.dart';
 import 'package:flutter/material.dart';
 
-void main() async {
+void main(){
   runApp(const Counter());
 }
 
