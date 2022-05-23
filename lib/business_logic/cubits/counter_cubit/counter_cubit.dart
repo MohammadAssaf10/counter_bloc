@@ -1,13 +1,14 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 part 'counter_state.dart';
 
 class CounterCubit extends Cubit<CounterCubitState> {
-  CounterCubit() : super(CounterCubitState(counterValue: 0));
+  CounterCubit() : super(const CounterCubitState(counterValue: 0));
   void increment() {
     emit(CounterCubitState(
-        counterValue: state.counterValue + 1, isIncrement: true));
+        counterValue: state.counterValue + 1, isIncremented: true));
 
     ///for test the function (onError)
     //addError(Exception('increment error'), StackTrace.current);
@@ -15,7 +16,7 @@ class CounterCubit extends Cubit<CounterCubitState> {
 
   void decrement() {
     emit(CounterCubitState(
-        counterValue: state.counterValue - 1, isIncrement: false));
+        counterValue: state.counterValue - 1, isIncremented: false));
     //addError(Exception('decrement error'), StackTrace.current);
   }
 

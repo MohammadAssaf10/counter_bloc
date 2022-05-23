@@ -9,7 +9,7 @@ class CounterBlocScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<CounterBloc, CounterBlocState>(
       listener: (context, state) {
-        if (state.isIncrement == true) {
+        if (state.isIncremented == true) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Incremented'),
