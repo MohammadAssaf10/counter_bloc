@@ -7,7 +7,7 @@ import 'package:meta/meta.dart';
 part 'counter_event.dart';
 part 'counter_state.dart';
 
-class CounterBloc extends Bloc<CounterEvent, CounterBlocState> {
+class CounterBloc extends Bloc<CounterEvent, BlocCounterState> {
   CounterBloc() : super(const CounterBlocState(counterValue: 0)) {
     on<CounterIncrementValue>((event, emit) {
       /// For test the function (onError)
@@ -21,13 +21,13 @@ class CounterBloc extends Bloc<CounterEvent, CounterBlocState> {
     });
   }
   @override
-  void onChange(Change<CounterBlocState> change) {
+  void onChange(Change<BlocCounterState> change) {
     super.onChange(change);
     print(change.nextState.counterValue);
   }
 
   @override
-  void onTransition(Transition<CounterEvent, CounterBlocState> transition) {
+  void onTransition(Transition<CounterEvent, BlocCounterState> transition) {
     super.onTransition(transition);
     print(transition);
     print(transition.nextState.counterValue);

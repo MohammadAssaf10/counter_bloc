@@ -1,13 +1,15 @@
-import 'package:counter_bloc/business_logic/blocs/counter_bloc/counter_bloc.dart';
+import 'package:counter_bloc/logic/blocs/counter_bloc/counter_bloc.dart';
+import 'package:counter_bloc/presentation/screens/counter_cubit_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CounterBlocScreen extends StatelessWidget {
+  static const String id = 'CounterBlocScreen';
   const CounterBlocScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CounterBloc, CounterBlocState>(
+    return BlocConsumer<CounterBloc, BlocCounterState>(
       listener: (context, state) {
         if (state.isIncremented == true) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -45,7 +47,7 @@ class CounterBlocScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: BlocBuilder<CounterBloc, CounterBlocState>(
+                  child: BlocBuilder<CounterBloc, BlocCounterState>(
                     builder: (context, state) {
                       return Text('Bloc state: ${state.counterValue}');
                     },

@@ -1,14 +1,15 @@
-import 'package:counter_bloc/business_logic/cubits/counter_cubit/counter_cubit.dart';
-import 'package:counter_bloc/presentation/pages/counter_bloc_page.dart';
+import 'package:counter_bloc/logic/cubits/counter_cubit/counter_cubit.dart';
+import 'package:counter_bloc/presentation/screens/counter_bloc_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CounterCubitScreen extends StatelessWidget {
+  static const String id = 'CounterCubitScreen';
   const CounterCubitScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CounterCubit, CounterCubitState>(
+    return BlocConsumer<CounterCubit, CubitCounterState>(
       listener: (context, state) {
         if (state.isIncremented == true) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -30,7 +31,9 @@ class CounterCubitScreen extends StatelessWidget {
         return Scaffold(
           floatingActionButton: FloatingActionButton(
             heroTag: 'Next',
-            onPressed: () => Navigator.pushNamed(context, CounterBlocPage.id),
+            onPressed: () {
+              Navigator.pushNamed(context, CounterBlocScreen.id);
+            },
             child: const Icon(Icons.arrow_forward),
           ),
           body: Center(
@@ -44,7 +47,7 @@ class CounterCubitScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: BlocBuilder<CounterCubit, CounterCubitState>(
+                  child: BlocBuilder<CounterCubit, CubitCounterState>(
                     builder: (context, state) {
                       return Text('Cubit state: ${state.counterValue}');
                     },

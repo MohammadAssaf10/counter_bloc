@@ -1,5 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:counter_bloc/business_logic/blocs/counter_bloc/counter_bloc.dart';
+import 'package:counter_bloc/logic/blocs/counter_bloc/counter_bloc.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -12,7 +12,7 @@ void main() {
       expect(counterBloc.state.counterValue, 0);
     });
 
-    blocTest<CounterBloc, CounterBlocState>(
+    blocTest<CounterBloc, BlocCounterState>(
       'emits [1] when CounterIncrementValue is added',
       build: () => counterBloc,
       act: (bloc) {
@@ -23,7 +23,7 @@ void main() {
       ],
     );
 
-    blocTest<CounterBloc, CounterBlocState>(
+    blocTest<CounterBloc, BlocCounterState>(
       'emits [-1] when CounterDecrementValue is added',
       build: () => counterBloc,
       act: (bloc) {

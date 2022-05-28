@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 
 part 'counter_state.dart';
 
-class CounterCubit extends Cubit<CounterCubitState> {
+class CounterCubit extends Cubit<CubitCounterState> {
   CounterCubit() : super(const CounterCubitState(counterValue: 0));
   void increment() {
     emit(CounterCubitState(
@@ -21,7 +21,7 @@ class CounterCubit extends Cubit<CounterCubitState> {
   }
 
   @override
-  void onChange(Change<CounterCubitState> change) {
+  void onChange(Change<CubitCounterState> change) {
     super.onChange(change);
     print(change.nextState.counterValue);
   }
